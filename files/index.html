@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- Idioma da página: ajuda leitores de tela e o Google -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz o site se ajustar à tela do celular. Sem esta linha, o layout mobile quebra. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbearia Alpha | Corte e barba em Curitiba</title>
+  <meta name="description" content="Barbearia Alpha: corte masculino, barba e sobrancelha com atendimento personalizado. Agende pelo WhatsApp.">
+  <meta name="theme-color" content="#12151a">
+  <meta name="color-scheme" content="dark">
+  <!-- Fontes do Google (se ficarem offline, o navegador usa as fontes reserva do CSS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Ícone da aba do navegador (SVG embutido, sem arquivo extra) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312151a'/%3E%3Ctext x='32' y='46' font-size='40' font-weight='700' text-anchor='middle' fill='%23cfa45d' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
+  <!-- Pré-visualização ao compartilhar o link (WhatsApp, Instagram etc.). Para mostrar imagem, adicione og:image com uma foto real -->
+  <meta property="og:title" content="Barbearia Alpha | Seu estilo começa aqui.">
+  <meta property="og:description" content="Corte, barba e sobrancelha com hora marcada. Agende pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <!-- Dados para o Google entender o negócio. FICTÍCIOS: troque pelos reais -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HairSalon","name":"Barbearia Alpha","telephone":"+55-41-99999-9999",
+   "address":{"@type":"PostalAddress","streetAddress":"Rua das Palmeiras, 123","addressLocality":"Curitiba","addressRegion":"PR","postalCode":"80000-000","addressCountry":"BR"},
+   "openingHours":["Tu-Fr 09:00-20:00","Sa 09:00-18:00"],"priceRange":"R$15 - R$55"}
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Link para quem navega só com teclado pular direto ao conteúdo -->
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- ===== CABEÇALHO / MENU ===== -->
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="logo" href="#topo">Barbearia Alpha</a>
+      <!-- Botão do menu no celular (o JS controla aria-expanded) -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu" class="nav" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+        <a class="btn btn-small" data-whatsapp href="#localizacao">Agendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ===== 1. HERO ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Seu estilo<br>começa aqui.</h1>
+        <p class="hero-text">Na Barbearia Alpha, cada corte é feito com calma, técnica e atenção aos detalhes. Chegue como está e saia pronto para qualquer ocasião.</p>
+        <div class="hero-actions">
+          <a class="btn" data-whatsapp href="#localizacao">Agendar pelo WhatsApp</a>
+          <a class="btn btn-outline" href="#servicos">Ver serviços e preços</a>
+        </div>
+        <p class="hero-note">Atendemos de terça a sábado, com hora marcada.</p>
+      </div>
+      <!-- Faixa inspirada no poste de barbeiro: o detalhe visual da marca -->
+      <div class="hero-pole" aria-hidden="true"></div>
+      <div class="pole" aria-hidden="true"></div>
+    </section>
+
+    <!-- Faixa de confiança: respostas rápidas às primeiras dúvidas do cliente -->
+    <section class="trust" aria-label="Informações rápidas">
+      <ul class="container">
+        <li>Desde 2018</li>
+        <li>Hora marcada, sem fila</li>
+        <li>Pix, cartão e dinheiro</li>
+        <li>Café e ar-condicionado</li>
+      </ul>
+    </section>
+
+    <!-- ===== 2. SOBRE ===== -->
+    <section class="section" id="sobre">
+      <div class="container about">
+        <h2>Uma cadeira, uma tesoura e muito capricho</h2>
+        <div class="about-text">
+          <p>A Barbearia Alpha nasceu em 2018, quando dois amigos barbeiros decidiram abrir um espaço onde o cliente não fosse só mais um na fila. Começamos com uma cadeira e hoje atendemos centenas de clientes por mês.</p>
+          <p>Nosso foco é simples: qualidade no acabamento, atendimento que escuta o que você quer e um ambiente em que dá vontade de ficar. Entre uma navalha e outra, sempre sobra tempo para um café e uma boa conversa.</p>
+          <p class="demo-note">Texto fictício, criado para fins de demonstração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. SERVIÇOS ===== -->
+    <section class="section section-alt" id="servicos">
+      <div class="container">
+        <h2>Serviços e preços</h2>
+        <!-- Para novo serviço: copie um <article class="card"> inteiro e edite -->
+        <div class="grid grid-4">
+          <article class="card">
+            <h3>Corte masculino</h3>
+            <p>Tesoura ou máquina, do clássico ao degradê.</p>
+            <p class="meta">40 min</p>
+            <p class="price">R$ 35</p>
+          </article>
+          <article class="card">
+            <h3>Barba</h3>
+            <p>Modelagem com navalha e toalha quente.</p>
+            <p class="meta">30 min</p>
+            <p class="price">R$ 25</p>
+          </article>
+          <article class="card card-featured">
+            <h3>Corte + Barba</h3>
+            <p>O combo completo, com economia.</p>
+            <p class="meta">70 min. Você economiza R$ 5.</p>
+            <p class="price">R$ 55</p>
+          </article>
+          <article class="card">
+            <h3>Sobrancelha</h3>
+            <p>Alinhamento discreto e natural.</p>
+            <p class="meta">15 min</p>
+            <p class="price">R$ 15</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. GALERIA ===== -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <h2>Nossos trabalhos</h2>
+        <p class="section-sub">Imagens ilustrativas.</p>
+        <div class="gallery">
+          <!--
+            COMO TROCAR: coloque suas fotos na pasta "img" e troque cada <div class="photo-placeholder">
+            por uma linha como esta (sempre com texto no alt):
+            <img src="img/corte-1.jpg" alt="Degradê com acabamento na navalha" loading="lazy">
+            Dica: use fotos na proporção 4:5 (vertical) e com menos de 300 KB.
+          -->
+          <figure><div class="photo-placeholder"><span>Degradê</span></div></figure>
+          <figure><div class="photo-placeholder"><span>Barba na navalha</span></div></figure>
+          <figure><div class="photo-placeholder"><span>Corte clássico</span></div></figure>
+          <figure><div class="photo-placeholder"><span>Corte social</span></div></figure>
+          <figure><div class="photo-placeholder"><span>Barba desenhada</span></div></figure>
+          <figure><div class="photo-placeholder"><span>Sobrancelha</span></div></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. DIFERENCIAIS ===== -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Por que escolher a Alpha</h2>
+        <div class="grid grid-4">
+          <div class="feature"><h3>Atendimento personalizado</h3><p>Conversamos antes de cortar, para o resultado combinar com você.</p></div>
+          <div class="feature"><h3>Profissionais qualificados</h3><p>Equipe treinada, sempre atualizada nas técnicas e tendências.</p></div>
+          <div class="feature"><h3>Ambiente confortável</h3><p>Ar-condicionado, café e um espaço feito para relaxar.</p></div>
+          <div class="feature"><h3>Agendamento fácil</h3><p>Um toque no WhatsApp e seu horário fica reservado.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. AVALIAÇÕES ===== -->
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <h2>O que dizem nossos clientes</h2>
+        <p class="section-sub">Avaliações fictícias, apenas para demonstração.</p>
+        <div class="grid grid-3">
+          <blockquote class="review">
+            <p class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</p>
+            <p>“Melhor degradê que já fiz. Saí de lá muito satisfeito e já marquei o próximo.”</p>
+            <footer>Rafael M., cliente fictício</footer>
+          </blockquote>
+          <blockquote class="review">
+            <p class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</p>
+            <p>“Ambiente tranquilo, pontualidade e acabamento impecável na barba.”</p>
+            <footer>Lucas A., cliente fictício</footer>
+          </blockquote>
+          <blockquote class="review">
+            <p class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</p>
+            <p>“Marquei pelo WhatsApp em um minuto e fui atendido na hora combinada.”</p>
+            <footer>Pedro S., cliente fictício</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. LOCALIZAÇÃO ===== -->
+    <section class="section section-alt" id="localizacao">
+      <div class="container location">
+        <div>
+          <h2>Venha nos visitar</h2>
+          <address>Rua das Palmeiras, 123 – Centro<br>Curitiba – PR, 80000-000</address>
+          <p class="demo-note">Endereço fictício.</p>
+          <a class="btn btn-outline" target="_blank" rel="noopener noreferrer"
+             href="https://www.google.com/maps/search/?api=1&query=Rua+das+Palmeiras+123+Curitiba+PR">Abrir no Google Maps</a>
+          <!-- Mapa embutido. Troque o trecho depois de q= pelo endereço real -->
+          <iframe class="map" title="Mapa da localização da Barbearia Alpha" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Rua+das+Palmeiras+123+Curitiba+PR&output=embed"></iframe>
+        </div>
+        <div>
+          <h3>Horário de funcionamento</h3>
+          <p class="status" id="status" aria-live="polite"></p>
+          <ul class="hours">
+            <li><span>Terça a sexta</span><span>09h às 20h</span></li>
+            <li><span>Sábado</span><span>09h às 18h</span></li>
+            <li><span>Domingo e segunda</span><span>Fechado</span></li>
+          </ul>
+          <a class="btn" data-whatsapp href="#localizacao">Agendar pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 9. RODAPÉ ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Barbearia Alpha</strong>
+        <p>Rua das Palmeiras, 123 – Centro, Curitiba – PR</p>
+        <p>Ter a sex: 09h–20h · Sáb: 09h–18h</p>
+      </div>
+      <div>
+        <!-- Troque "barbeariaalpha" pelo usuário real do Instagram -->
+        <p><a href="https://instagram.com/barbeariaalpha" target="_blank" rel="noopener noreferrer">Instagram @barbeariaalpha</a></p>
+        <p><a data-whatsapp href="#localizacao">WhatsApp: (41) 99999-9999</a></p>
+      </div>
+    </div>
+    <p class="copy">© <span id="ano">2026</span> Barbearia Alpha. Projeto de portfólio com conteúdo fictício.</p>
+  </footer>
+
+  <!-- Botão flutuante: sempre visível, principalmente no celular -->
+  <a class="btn fab" data-whatsapp href="#localizacao">Agendar no WhatsApp</a>
+
+  <script src="script.js"></script>
+</body>
+</html>
