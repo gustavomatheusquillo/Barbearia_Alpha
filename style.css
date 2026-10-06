@@ -1,0 +1,226 @@
+/* ==========================================================
+   BARBEARIA ALPHA - ESTILOS
+   Ordem: 1 variáveis, 2 base, 3 componentes, 4 seções, 5 identidade, 6 responsivo
+   ========================================================== */
+
+/* 1. VARIÁVEIS: para mudar as cores do site, edite só este bloco */
+:root {
+  --bg: #0c1626;          /* azul-marinho do poste de barbeiro: fundo principal */
+  --surface: #122238;     /* seções alternadas */
+  --line: #223652;        /* linhas e bordas discretas */
+  --text: #f1ede6;        /* branco quente (listra branca do poste) */
+  --muted: #a9b4c4;       /* texto secundário */
+  --accent: #c42d27;      /* vermelho do poste: SÓ para ações (botões) */
+  --accent-dark: #9f211c; /* vermelho no hover */
+  --red: #c42d27;
+  --blue: #3a73c4;
+  --stripes: repeating-linear-gradient(135deg, var(--red) 0 14px, #f1ede6 14px 28px, var(--blue) 28px 42px, #f1ede6 42px 56px);
+  --font-title: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 4px;          /* cantos pouco arredondados, como placa de barbearia */
+}
+
+/* 2. BASE */
+*, *::before, *::after { box-sizing: border-box; } /* padding não aumenta a largura */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; } /* rolagem suave, sem esconder título sob o menu */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-tap-highlight-color: transparent;
+}
+a, button { touch-action: manipulation; } /* remove atraso de toque no celular */
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-title); text-wrap: balance; line-height: 1.1; margin: 0 0 .6em; font-weight: 700; }
+h1 { font-size: clamp(3rem, 12vw, 7.5rem); text-transform: uppercase; line-height: .92; letter-spacing: .005em; margin-bottom: .3em; }
+h2 { font-size: clamp(2rem, 6vw, 3rem); }
+h3 { font-size: 1.5rem; }
+p { margin: 0 0 1em; }
+.hero-text, .about-text p { text-wrap: pretty; } /* evita linha final com 1 palavra só em textos longos */
+main:focus { outline: none; } /* o foco do "pular para o conteúdo" não precisa de contorno */
+
+/* Contorno visível para quem usa teclado (acessibilidade) */
+:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+.container { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--accent); color: #fff; padding: .6rem 1rem; z-index: 100; }
+.skip-link:focus { left: 0; }
+
+/* 3. COMPONENTES */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: .9rem 1.6rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  transition: background .2s, transform .2s;
+}
+.btn:active { transform: scale(.97); } /* feedback ao tocar */
+/* hover só em dispositivos com mouse: no celular o hover "gruda" após o toque */
+@media (hover: hover) {
+  .btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+  .btn-outline:hover { background: var(--text); border-color: var(--text); color: var(--bg); }
+}
+.btn-small { padding: .5rem 1.1rem; }
+.btn-outline { background: transparent; color: var(--text); border-color: var(--text); }
+
+/* Cabeçalho fixo no topo */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(12,22,38,.92); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.site-header.scrolled { border-bottom-color: var(--line); } /* classe adicionada pelo JS */
+.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+.logo { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-title); font-size: 1.7rem; font-weight: 700; text-decoration: none; }
+.logo-mark { width: 34px; height: 34px; flex: none; }
+.nav { display: flex; align-items: center; gap: 1.6rem; }
+.nav a:not(.btn) { text-decoration: none; color: var(--muted); }
+.nav a:not(.btn):hover { color: var(--text); }
+.menu-toggle { display: none; background: none; border: 0; padding: .6rem; cursor: pointer; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: transform .2s, opacity .2s; }
+/* Hambúrguer vira "X" quando o menu está aberto */
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* 4. SEÇÕES */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 0;
+  /* Foto opcional: no :root defina --hero-photo: url("img/hero.jpg"); sem isso aparece só o azul liso */
+  background: linear-gradient(90deg, var(--bg) 35%, rgba(12,22,38,.55) 100%), var(--hero-photo, none) center / cover no-repeat, var(--bg);
+}
+.hero-inner { padding-bottom: 4rem; }
+.hero-text { max-width: 34rem; color: var(--muted); font-size: 1.2rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.hero-note { margin: 1rem 0 0; font-size: .95rem; color: var(--muted); }
+/* Entrada suave do hero: único movimento automático da página */
+.hero-inner > * { animation: subir .7s ease backwards; /* backwards: não trava o hover depois da entrada */ }
+.hero-inner > :nth-child(2) { animation-delay: .1s; }
+.hero-inner > :nth-child(3) { animation-delay: .2s; }
+.hero-inner > :nth-child(4) { animation-delay: .3s; }
+@keyframes subir { from { opacity: 0; transform: translateY(18px); } }
+
+/* Faixa do poste de barbeiro: listras diagonais vermelho/branco/azul */
+.pole { height: 14px; background: var(--stripes); }
+
+.trust { border-bottom: 1px solid var(--line); }
+.trust ul { font-size: 1rem; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1.4rem 0; margin: 0 auto; text-align: center; color: var(--muted); font-weight: 500; }
+.section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+.section-alt { background: var(--surface); }
+.section-sub, .demo-note { color: var(--muted); font-size: .95rem; }
+.about { display: grid; gap: 2rem; grid-template-columns: 1fr 1.2fr; align-items: start; }
+.about-text { color: var(--muted); }
+
+.grid { display: grid; gap: 1.2rem; margin-top: 2rem; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+
+
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: clamp(150px, 22vw, 250px); gap: 1rem; margin-top: 2rem; }
+.gallery figure:first-child { grid-row: span 2; } /* 1ª foto maior: ritmo editorial */
+.gallery figure { margin: 0; }
+.gallery img, .photo-placeholder { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+.gallery img { filter: saturate(.85) contrast(1.05); } /* tom único, mesmo com fotos de fontes diferentes */
+.photo-placeholder { position: relative; overflow: hidden; display: grid; place-items: end start; padding: 1.2rem; background: linear-gradient(160deg, #262c36, #171a20); border: 1px solid var(--line); color: var(--text); font-family: var(--font-title); font-size: 1.6rem; font-weight: 600; }
+.photo-placeholder::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 8px; background: repeating-linear-gradient(135deg, var(--red) 0 10px, #f1ede6 10px 20px, var(--blue) 20px 30px, #f1ede6 30px 40px); }
+
+.feature { border-top: 2px solid var(--text); padding-top: 1rem; }
+.feature p { color: var(--muted); }
+
+.review p { font-size: 1.1rem; }
+.review .stars { color: #e6b450; font-size: 1.1rem; letter-spacing: .15em; margin-bottom: .6rem; }
+.review footer { color: var(--muted); font-size: .9rem; }
+
+.location { display: grid; gap: 3rem; grid-template-columns: 1fr 1fr; }
+address { font-style: normal; font-size: 1.15rem; margin-bottom: .5rem; }
+.status { display: flex; align-items: center; gap: .6rem; font-weight: 500; }
+.status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex: none; }
+.status.open::before { background: #4caf74; }
+.status.closed::before { background: var(--red); }
+.map { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; border-radius: var(--radius); margin-top: 1.5rem; }
+.btn.fab { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 40; width: auto; box-shadow: 0 8px 24px rgba(0,0,0,.45);
+  /* escondido por padrão: o JS mostra só fora do hero, da localização e do rodapé */
+  opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .25s, transform .25s, visibility .25s, background .2s; }
+.btn.fab.show { opacity: 1; visibility: visible; transform: none; }
+.hours { list-style: none; padding: 0; margin: 0 0 1.6rem; }
+.hours li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+
+.site-footer { padding: 3rem 0 1.5rem; border-top: 1px solid var(--line); color: var(--muted); }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+.footer-inner strong { color: var(--text); font-family: var(--font-title); font-size: 1.5rem; }
+.footer-inner a { display: inline-block; padding: .55rem 0; } /* área de toque maior */
+.footer-inner a:hover { color: var(--text); text-decoration: underline; }
+.copy { text-align: center; margin: 2rem 0 0; font-size: .9rem; }
+
+/* ==========================================================
+   5. IDENTIDADE: botões, lista de serviços, avaliações, rodapé
+   ========================================================== */
+
+/* Botão principal: o vermelho "preenche" da esquerda para a direita no hover */
+.btn:not(.btn-outline) { background-image: linear-gradient(var(--accent-dark), var(--accent-dark)); background-repeat: no-repeat; background-size: 0 100%; transition: background-size .3s, transform .2s, color .2s, border-color .2s; }
+@media (hover: hover) { .btn:not(.btn-outline):hover { background-size: 100% 100%; } }
+.btn.fab { transition: opacity .25s, transform .25s, visibility .25s, background-size .3s; }
+.hero .status { margin-top: 1.2rem; }
+
+/* Serviços como "tabela de preços" de barbearia (e não cards iguais) */
+.menu-list { list-style: none; margin: 2.5rem 0 0; padding: 0; border-top: 1px solid var(--text); }
+.service { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "info price" "info cta"; column-gap: 1.5rem; align-items: center; padding: 1.5rem .5rem; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .2s, padding .2s; }
+.service-info { grid-area: info; }
+.service h3 { margin: 0 0 .15em; }
+.service p { margin: 0; color: var(--muted); }
+.service-price { grid-area: price; font-family: var(--font-title); font-size: clamp(2.2rem, 7vw, 3.2rem); line-height: 1; text-align: right; }
+.service-cta { grid-area: cta; justify-self: end; font-weight: 600; font-size: .95rem; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+.service.featured { background: rgba(255,255,255,.04); box-shadow: inset 4px 0 var(--accent); padding-left: 1.4rem; }
+@media (hover: hover) { .service:hover { background: rgba(255,255,255,.06); padding-inline: 1.2rem; } }
+
+/* Avaliações: a primeira em destaque, as outras menores */
+.reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; margin-top: 2rem; }
+.review { margin: 0; padding: 1.5rem 0; border-top: 1px solid var(--line); }
+.review:first-child { grid-column: 1 / -1; }
+.review:first-child p:not(.stars) { font-family: var(--font-title); font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; }
+
+/* Rodapé fecha a página com a mesma faixa do hero */
+.site-footer { position: relative; border-top: 0; padding-top: 3.5rem; }
+.site-footer::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 8px; background: var(--stripes); }
+
+/* 6. RESPONSIVO: ajustes para telas menores */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .about, .location { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .reviews { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .menu-toggle { display: block; }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: .5rem 1.25rem 1.25rem; }
+  .nav.open { display: flex; } /* classe adicionada pelo JS */
+  .nav a:not(.btn) { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .nav .btn { text-align: center; margin-top: 1rem; }
+  .hero { padding-top: 3rem; background: linear-gradient(rgba(12,22,38,.85), var(--bg)), var(--hero-photo, none) center / cover no-repeat, var(--bg); }
+  .hero-inner { padding-bottom: 2.5rem; }
+  .hero-text { font-size: 1.1rem; }
+  .nav { max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; } /* menu rola em celular deitado */
+  .photo-placeholder { padding: .8rem; font-size: 1.25rem; }
+  .map { aspect-ratio: 4 / 3; }
+  .trust ul { grid-template-columns: repeat(2, 1fr); }
+  .site-footer { padding-bottom: 6rem; } /* espaço para o botão flutuante */
+  .section { padding: 3.5rem 0; }
+  .btn { width: 100%; text-align: center; } /* botões grandes e fáceis de tocar */
+}
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  /* Serviços compactos: nome e descrição à esquerda, preço à direita */
+}
+/* Em telas de toque, o mapa não captura a rolagem; use o botão "Abrir no Google Maps" */
+@media (hover: none) { .map { pointer-events: none; } }
+
+/* Respeita quem desativa animações no sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
